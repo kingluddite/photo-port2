@@ -1,4 +1,4 @@
-function Modal({ currentPhoto }) {
+function Modal({ onClose, currentPhoto }) {
   const { name, category, description, index } = currentPhoto;
 
   return (
@@ -10,8 +10,10 @@ function Modal({ currentPhoto }) {
           src={require(`../../assets/img/large/${category}/${index}.jpg`).default}
           alt="current category"
         />
-        <p>Photo Description</p>
-        <button type="button">{description}</button>
+        <p>{description}</p>
+        <button onClick={onClose} type="button">
+          Close this modal
+        </button>
       </div>
     </div>
   );
