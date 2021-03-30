@@ -19,6 +19,7 @@ function App() {
   ]);
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  const [contactSelected, setContactSelected] = useState(false);
 
   return (
     <div>
@@ -26,56 +27,21 @@ function App() {
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
       />
       <main>
-        <ContactForm />
-        <Gallery currentCategory={currentCategory} />
-        <About />
+        {!contactSelected ? (
+          <>
+            <Gallery currentCategory={currentCategory} />
+            <About />
+          </>
+        ) : (
+          <ContactForm />
+        )}
       </main>
     </div>
   );
 }
 
 export default App;
-// import React from 'react';
-//
-// function SomeComponent() {
-//   let seconds = 0;
-//
-//   function startStopwatch() {
-//     setInterval(() => {
-//       console.log(seconds);
-//       seconds += 1;
-//     }, 1000);
-//   }
-//
-//   return (
-//     <div>
-//       {seconds}
-//       <button onClick={startStopwatch}>Start</button>
-//     </div>
-//   );
-// }
-//
-// export default SomeComponent;
-// import React, { useState } from 'react';
-// function SomeComponent() {
-//   const [seconds, setSeconds] = useState(0);
-//
-//   function startStopwatch() {
-//     let updatedSeconds = seconds;
-//     setInterval(() => {
-//       updatedSeconds += 1;
-//       console.log(updatedSeconds);
-//       setSeconds(updatedSeconds);
-//     }, 1000);
-//   }
-//
-//   return (
-//     <div>
-//       {seconds}
-//       <button onClick={startStopwatch}>Start</button>
-//     </div>
-//   );
-// }
-// export default SomeComponent;
